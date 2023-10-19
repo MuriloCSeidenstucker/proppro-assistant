@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "PropproAssistant (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "PropproAssistant (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
