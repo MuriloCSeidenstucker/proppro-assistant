@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PropproAssistant.Models;
 
-public class BiddingInfo
+public class Bidding
 {
     [Key]
     public int Id { get; set; }

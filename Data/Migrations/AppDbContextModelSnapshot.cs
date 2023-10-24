@@ -49,7 +49,7 @@ namespace PropproAssistant.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Biddings");
+                    b.ToTable("Biddings", (string)null);
                 });
 
             modelBuilder.Entity("PropproAssistant.Models.BiddingItem", b =>
@@ -86,7 +86,7 @@ namespace PropproAssistant.Data.Migrations
 
                     b.HasIndex("BiddingId");
 
-                    b.ToTable("BiddingItem");
+                    b.ToTable("BiddingItem", (string)null);
                 });
 
             modelBuilder.Entity("PropproAssistant.Models.BiddingItem", b =>

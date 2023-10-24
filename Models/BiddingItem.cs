@@ -15,10 +15,10 @@ public class BiddingItem
     public string Brand { get; set; }
 
     public int BiddingKey { get; set; }
-    public BiddingInfo Bidding { get; set; }
+    public Bidding Bidding { get; set; }
 
     public override string ToString()
     {
-        return $"{Number}, {Description}, {Unit}, {Amount}, {Brand}, {CostValue}";
+        return $"{Bidding.Modality} {Bidding.Number}:\n{Number}, {Description}, {Unit}, {Amount}, {Brand}, {CostValue}";
     }
 }

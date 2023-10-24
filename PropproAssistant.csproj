@@ -12,8 +12,11 @@
     <EnableMsixTooling>true</EnableMsixTooling>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Views\BiddingInfoView.xaml" />
-    <None Remove="Views\BiddingItemsView.xaml" />
+    <None Remove="MainWindow.xaml" />
+    <None Remove="Pages\BiddingRegisterPage.xaml" />
+    <None Remove="Pages\ItemRegisterPage.xaml" />
+    <None Remove="Pages\MainPage.xaml" />
+    <None Remove="Pages\NotFoundPage.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -46,12 +49,32 @@
     <ProjectCapability Include="Msix" />
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Views\BiddingItemsView.xaml">
+    <Page Update="Pages\NotFoundPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Views\BiddingInfoView.xaml">
+    <Page Update="Pages\MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\BiddingItemPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\BiddingRegisterPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

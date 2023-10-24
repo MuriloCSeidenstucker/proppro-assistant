@@ -7,7 +7,7 @@ namespace PropproAssistant.Data;
 
 public class AppDbContext : DbContext
 {
-    public DbSet<BiddingInfo> Biddings { get; set; }
+    public DbSet<Bidding> Biddings { get; set; }
 
     public string DbPath { get; }
 
