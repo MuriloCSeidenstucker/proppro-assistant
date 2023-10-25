@@ -91,7 +91,7 @@
         <Button Content="Salvar" Click="Register_Click" Grid.Row="8" Grid.Column="0" 
         Margin="5" BorderThickness="5"/>
 
-        <InfoBar x:Name="ErrorMessage" Grid.Row="10" Grid.Column="1"
+        <InfoBar x:Name="Info_Bidding" Grid.Row="10" Grid.Column="1"
         IsOpen="False"
         Severity="Error"
         Title="Campos inválidos" />

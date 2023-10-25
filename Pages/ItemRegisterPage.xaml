@@ -19,8 +19,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <!-- TEMP -->
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -59,8 +58,6 @@
         <Button x:Name="Btn_Save" Content="Salvar" Click="Register_Click" Grid.Row="7" Grid.Column="0" 
         Margin="5" BorderThickness="5"/>
 
-        <!-- TEMP -->
-        <TextBox x:Name="TxtB_Test" Grid.Row="8" Grid.Column="1" Margin="5" AcceptsReturn="True"
-         TextWrapping="Wrap" Height="100"/>
+        <InfoBar x:Name="Info_Item" Grid.Row="8" Grid.Column="1" IsOpen="False"/>
     </Grid>
 </Page>

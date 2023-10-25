@@ -48,7 +48,7 @@ public sealed partial class BiddingRegister : Page
         }
         else
         {
-            ErrorMessage.IsOpen = true;
+            Info_Bidding.IsOpen = true;
         }
     }
 }
