@@ -9,7 +9,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid x:Name="Test">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -20,8 +20,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <!-- TEMP -->
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -31,7 +30,8 @@
 
         <!-- Número da Licitação -->
         <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">Número da Licitação:</TextBlock>
-        <TextBox x:Name="TxtB_BiddingNumber" Grid.Row="0" Grid.Column="1" Margin="5" HorizontalAlignment="Left"/>
+        <TextBox x:Name="TxtB_BiddingNumber" Grid.Row="0" Grid.Column="1"
+                 Margin="5" HorizontalAlignment="Left" PlaceholderText="Apenas números: 102023"/>
 
         <!-- Objeto da Licitação -->
         <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">Objeto da Licitação:</TextBlock>
@@ -91,8 +91,9 @@
         <Button Content="Salvar" Click="Register_Click" Grid.Row="8" Grid.Column="0" 
         Margin="5" BorderThickness="5"/>
 
-        <!-- TEMP -->
-        <TextBox x:Name="TxtB_Test" Grid.Row="9" Grid.Column="1" Margin="5" AcceptsReturn="True"
-         TextWrapping="Wrap" Height="100"/>
+        <InfoBar x:Name="ErrorMessage" Grid.Row="10" Grid.Column="1"
+        IsOpen="False"
+        Severity="Error"
+        Title="Campos inválidos" />
     </Grid>
 </Page>

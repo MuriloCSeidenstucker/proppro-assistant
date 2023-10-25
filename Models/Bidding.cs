@@ -9,7 +9,9 @@ public class Bidding
     [Key]
     public int Id { get; set; }
 
-    public string Number { get; set; }
+    [Range(5, 8, ErrorMessage = "Apenas números, digite o número da licitação e o ano")]
+    public int Number { get; set; }
+
     public string BiddingObject { get; set; }
     public string City { get; set; }
     public string State { get; set; }
