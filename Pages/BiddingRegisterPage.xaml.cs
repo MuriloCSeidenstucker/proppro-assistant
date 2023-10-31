@@ -1,5 +1,6 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using PropproAssistant.Data;
 using PropproAssistant.Models;
 
 namespace PropproAssistant.Pages;
@@ -43,6 +44,11 @@ public sealed partial class BiddingRegister : Page
             bidding.JudgingType = ((ComboBoxItem)Cbx_BiddingJudgingType.SelectedItem).Content.ToString();
             bidding.Portal = ((ComboBoxItem)Cbx_BiddingPortal.SelectedItem).Content.ToString();
             bidding.Date = Date_BiddingDate.SelectedDate;
+
+            // Adicionar licitação no banco de dados
+            using var db = new AppDbContext();
+            db.Add(bidding);
+            db.SaveChanges();
 
             Frame.Navigate(typeof(ItemRegister), bidding);
         }

@@ -1,7 +1,9 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
+using PropproAssistant.Data;
 using PropproAssistant.Models;
+using System.Linq;
 
 namespace PropproAssistant.Pages;
 
@@ -63,9 +65,20 @@ public sealed partial class ItemRegister : Page
             item.Unit = TxtB_ItemUnit.Text;
             item.Brand = TxtB_ItemBrand.Text;
 
-            Info_Item.Title = "Item incluido com sucesso!";
-            Info_Item.Severity = InfoBarSeverity.Success;
-            Info_Item.IsOpen = true;
+            // Adicionar item na licitação
+            if (!_bidding.Items.Contains(item))
+            {
+                _bidding.Items.Add(item);
+
+                using var db = new AppDbContext();
+                var bidding = db.Biddings.First(b => b.Id == _bidding.Id);
+                bidding.Items.Add(item);
+                db.SaveChanges();
+
+                Info_Item.Title = "Item incluido com sucesso!";
+                Info_Item.Severity = InfoBarSeverity.Success;
+                Info_Item.IsOpen = true;
+            }
         }
         else
         {

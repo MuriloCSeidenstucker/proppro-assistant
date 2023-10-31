@@ -16,6 +16,6 @@ public sealed partial class MainPage : Page
 
     private void Show_OnClick(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
     {
-        Frame.Navigate(typeof(NotFound));
+        Frame.Navigate(typeof(RegisteredBiddingsPage));
     }
 }

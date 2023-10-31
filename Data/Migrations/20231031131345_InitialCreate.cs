@@ -17,7 +17,7 @@ namespace PropproAssistant.Data.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Number = table.Column<string>(type: "TEXT", nullable: true),
+                    Number = table.Column<int>(type: "INTEGER", nullable: false),
                     BiddingObject = table.Column<string>(type: "TEXT", nullable: true),
                     City = table.Column<string>(type: "TEXT", nullable: true),
                     State = table.Column<string>(type: "TEXT", nullable: true),
@@ -32,7 +32,7 @@ namespace PropproAssistant.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "BiddingItem",
+                name: "Items",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -43,22 +43,21 @@ namespace PropproAssistant.Data.Migrations
                     Description = table.Column<string>(type: "TEXT", nullable: true),
                     Unit = table.Column<string>(type: "TEXT", nullable: true),
                     Brand = table.Column<string>(type: "TEXT", nullable: true),
-                    BiddingKey = table.Column<int>(type: "INTEGER", nullable: false),
                     BiddingId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BiddingItem", x => x.Id);
+                    table.PrimaryKey("PK_Items", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_BiddingItem_Biddings_BiddingId",
+                        name: "FK_Items_Biddings_BiddingId",
                         column: x => x.BiddingId,
                         principalTable: "Biddings",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_BiddingItem_BiddingId",
-                table: "BiddingItem",
+                name: "IX_Items_BiddingId",
+                table: "Items",
                 column: "BiddingId");
         }
 
@@ -66,7 +65,7 @@ namespace PropproAssistant.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "BiddingItem");
+                name: "Items");
 
             migrationBuilder.DropTable(
                 name: "Biddings");

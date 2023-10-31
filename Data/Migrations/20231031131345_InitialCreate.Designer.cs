@@ -11,7 +11,7 @@ using PropproAssistant.Data;
 namespace PropproAssistant.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231019193924_InitialCreate")]
+    [Migration("20231031131345_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -20,7 +20,7 @@ namespace PropproAssistant.Data.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.12");
 
-            modelBuilder.Entity("PropproAssistant.Models.BiddingInfo", b =>
+            modelBuilder.Entity("PropproAssistant.Models.Bidding", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -41,8 +41,8 @@ namespace PropproAssistant.Data.Migrations
                     b.Property<string>("Modality")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Number")
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Number")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Portal")
                         .HasColumnType("TEXT");
@@ -67,9 +67,6 @@ namespace PropproAssistant.Data.Migrations
                     b.Property<int?>("BiddingId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("BiddingKey")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("Brand")
                         .HasColumnType("TEXT");
 
@@ -89,19 +86,19 @@ namespace PropproAssistant.Data.Migrations
 
                     b.HasIndex("BiddingId");
 
-                    b.ToTable("BiddingItem");
+                    b.ToTable("Items");
                 });
 
             modelBuilder.Entity("PropproAssistant.Models.BiddingItem", b =>
                 {
-                    b.HasOne("PropproAssistant.Models.BiddingInfo", "Bidding")
+                    b.HasOne("PropproAssistant.Models.Bidding", "Bidding")
                         .WithMany("Items")
                         .HasForeignKey("BiddingId");
 
                     b.Navigation("Bidding");
                 });
 
-            modelBuilder.Entity("PropproAssistant.Models.BiddingInfo", b =>
+            modelBuilder.Entity("PropproAssistant.Models.Bidding", b =>
                 {
                     b.Navigation("Items");
                 });

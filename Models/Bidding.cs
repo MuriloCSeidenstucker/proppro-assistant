@@ -20,7 +20,7 @@ public class Bidding
     public string Portal { get; set; }
     public DateTimeOffset? Date { get; set; }
 
-    public List<BiddingItem> Items { get; set; }
+    public List<BiddingItem> Items { get; set; } = new();
 
     public override string ToString()
     {
