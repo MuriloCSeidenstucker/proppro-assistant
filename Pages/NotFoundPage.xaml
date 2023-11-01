@@ -25,14 +25,5 @@
             FontSize="24" 
             FontWeight="Bold" 
             Foreground="DarkRed"/>
-        
-        <Button Grid.Row="3"
-                Content="Voltar"
-                Click="Back_OnClick"
-                HorizontalAlignment="Center" 
-                VerticalAlignment="Center" 
-                FontSize="24" 
-                FontWeight="Bold" 
-                Foreground="DarkRed"/>
     </Grid>
 </Page>

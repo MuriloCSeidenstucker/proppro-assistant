@@ -5,9 +5,9 @@ using System.Linq;
 
 namespace PropproAssistant.Pages;
 
-public sealed partial class RegisteredBiddingsPage : Page
+public sealed partial class RegisteredBiddings : Page
 {
-    public RegisteredBiddingsPage()
+    public RegisteredBiddings()
     {
         InitializeComponent();
 

@@ -9,17 +9,15 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="10"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <Button Grid.Row="1" Content="Cadastrar Licitação" Click="Register_OnClick" HorizontalAlignment="Center"/>
-        <Button Grid.Row="3" Content="Licitações Cadastradas" Click="Show_OnClick" HorizontalAlignment="Center"/>
-    </Grid>
+    <StackPanel>
+        <NavigationView x:Name="nv" PaneDisplayMode="Top" ItemInvoked="nv_ItemInvoked">
+            <NavigationView.MenuItems>
+                <NavigationViewItem  Content="Cadastrar Licitação" Tag="BiddingRegister" />
+                <NavigationViewItem  Content="Cadastrar Item" Tag="ItemRegister" />
+                <NavigationViewItem  Content="Licitações Cadastradas" Tag="RegisteredBiddings" />
+                <NavigationViewItem  Content="Página Não Encontrada" Tag="NotFound" />
+            </NavigationView.MenuItems>
+            <Frame x:Name="contentFrame"/>
+        </NavigationView>
+    </StackPanel>
 </Page>

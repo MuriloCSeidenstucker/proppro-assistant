@@ -8,9 +8,4 @@ public sealed partial class NotFound : Page
     {
         InitializeComponent();
     }
-
-    private void Back_OnClick(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
-    {
-        Frame.Navigate(typeof(MainPage));
-    }
 }

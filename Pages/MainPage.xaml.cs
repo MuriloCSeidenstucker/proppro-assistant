@@ -9,13 +9,26 @@ public sealed partial class MainPage : Page
         InitializeComponent();
     }
 
-    private void Register_OnClick(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    private void nv_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
     {
-        Frame.Navigate(typeof(BiddingRegister));
-    }
+        string selectedItemTag = args.InvokedItemContainer.Tag.ToString();
 
-    private void Show_OnClick(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
-    {
-        Frame.Navigate(typeof(RegisteredBiddingsPage));
+        switch (selectedItemTag)
+        {
+            case "BiddingRegister":
+                contentFrame.Navigate(typeof(BiddingRegister));
+                break;
+            case "ItemRegister":
+                contentFrame.Navigate(typeof(ItemRegister));
+                break;
+            case "RegisteredBiddings":
+                contentFrame.Navigate(typeof(RegisteredBiddings));
+                break;
+            case "NotFound":
+                contentFrame.Navigate(typeof(NotFound));
+                break;
+            default:
+                break;
+        }
     }
 }
