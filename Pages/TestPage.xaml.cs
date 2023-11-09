@@ -2,9 +2,9 @@ using Microsoft.UI.Xaml.Controls;
 
 namespace PropproAssistant.Pages;
 
-public sealed partial class NotFound : Page
+public sealed partial class TestPage : Page
 {
-    public NotFound()
+    public TestPage()
     {
         InitializeComponent();
     }

@@ -24,8 +24,8 @@ public sealed partial class MainPage : Page
             case "RegisteredBiddings":
                 contentFrame.Navigate(typeof(RegisteredBiddings));
                 break;
-            case "NotFound":
-                contentFrame.Navigate(typeof(NotFound));
+            case "TestPage":
+                contentFrame.Navigate(typeof(TestPage));
                 break;
             default:
                 break;
