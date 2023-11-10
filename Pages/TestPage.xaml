@@ -6,24 +6,43 @@
     xmlns:local="using:PropproAssistant.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+     xmlns:ctWinUI="using:CommunityToolkit.WinUI.UI.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid Background="LightGray">
-
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="10"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
-        <TextBlock Grid.Row="1" Text="Página Teste" 
-            HorizontalAlignment="Center" 
-            VerticalAlignment="Center" 
-            FontSize="24" 
-            FontWeight="Bold" 
-            Foreground="DarkRed"/>
+    <Grid>
+        <ctWinUI:DataGrid
+            x:Name="DataGrid"
+            AutoGenerateColumns="False"
+            Width="Auto"
+            Height="580"
+            Margin="100,20,100,20">
+            <ctWinUI:DataGrid.Columns>
+                <ctWinUI:DataGridTextColumn 
+                    Header="Item"
+                    Width="Auto"
+                    Binding="{Binding Number}"/>
+                <ctWinUI:DataGridTextColumn 
+                    Header="Descrição"
+                    Width="*"
+                    Binding="{Binding Description}"/>
+                <ctWinUI:DataGridTextColumn 
+                    Header="Unidade"
+                    Width="Auto"
+                    Binding="{Binding Unit}"/>
+                <ctWinUI:DataGridTextColumn 
+                    Header="Quantidade"
+                    Width="Auto"
+                    Binding="{Binding Amount}"/>
+                <ctWinUI:DataGridTextColumn 
+                    Header="Marca"
+                    Width="Auto"
+                    Binding="{Binding Brand}"/>
+                <ctWinUI:DataGridTextColumn 
+                    Header="Preço de Custo"
+                    Width="Auto"
+                    Binding="{Binding CostValue}"/>
+            </ctWinUI:DataGrid.Columns>
+        </ctWinUI:DataGrid>
     </Grid>
 </Page>
