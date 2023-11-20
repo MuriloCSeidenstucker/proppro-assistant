@@ -11,12 +11,25 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ComboBox
+            x:Name="Cbx_BiddingOptions"
+            Header="Licitações"
+            PlaceholderText="Selecione uma licitação"
+            DisplayMemberPath="Item1"
+            SelectedValuePath="Item2"
+            Width="Auto"
+            SelectionChanged="BiddingOptions_SelectionChanged"/>
         <ctWinUI:DataGrid
             x:Name="DataGrid"
             AutoGenerateColumns="False"
             Width="Auto"
-            Height="580"
-            Margin="100,20,100,20">
+            Height="500"
+            Margin="100,20,100,20"
+            Grid.Row="1">
             <ctWinUI:DataGrid.Columns>
                 <ctWinUI:DataGridTextColumn 
                     Header="Item"

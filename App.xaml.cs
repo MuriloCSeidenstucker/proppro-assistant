@@ -3,6 +3,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 using PropproAssistant.Pages;
 using System;
+using Windows.UI.ViewManagement;
 
 namespace PropproAssistant;
 
