@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Security.Cryptography;
 
 namespace PropproAssistant.Models;
 
@@ -24,6 +25,11 @@ public class Bidding
 
     public override string ToString()
     {
-        return $"{Number}, {BiddingObject}, {City}, {State}, {Modality}, {JudgingType}, {Portal}, {Date}";
+        string bidNumberStr = Number.ToString();
+        int yearLength = 4;
+        string year = bidNumberStr.Substring(bidNumberStr.Length - yearLength);
+        string number = bidNumberStr.Substring(0, bidNumberStr.Length - yearLength);
+        string formattedString = $"{number}/{year}";
+        return $"{Modality} {formattedString} - {City}";
     }
 }

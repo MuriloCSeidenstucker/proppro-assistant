@@ -10,7 +10,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -26,34 +26,35 @@
         <ctWinUI:DataGrid
             x:Name="DataGrid"
             AutoGenerateColumns="False"
+            IsReadOnly="True"
             Width="Auto"
             Height="500"
-            Margin="100,20,100,20"
+            Margin="50,10,50,10"
             Grid.Row="1">
             <ctWinUI:DataGrid.Columns>
                 <ctWinUI:DataGridTextColumn 
                     Header="Item"
-                    Width="Auto"
+                    Width="*"
                     Binding="{Binding Number}"/>
                 <ctWinUI:DataGridTextColumn 
                     Header="Descrição"
-                    Width="*"
+                    Width="5*"
                     Binding="{Binding Description}"/>
                 <ctWinUI:DataGridTextColumn 
                     Header="Unidade"
-                    Width="Auto"
+                    Width="*"
                     Binding="{Binding Unit}"/>
                 <ctWinUI:DataGridTextColumn 
                     Header="Quantidade"
-                    Width="Auto"
+                    Width="*"
                     Binding="{Binding Amount}"/>
                 <ctWinUI:DataGridTextColumn 
                     Header="Marca"
-                    Width="Auto"
+                    Width="*"
                     Binding="{Binding Brand}"/>
                 <ctWinUI:DataGridTextColumn 
                     Header="Preço de Custo"
-                    Width="Auto"
+                    Width="*"
                     Binding="{Binding CostValue}"/>
             </ctWinUI:DataGrid.Columns>
         </ctWinUI:DataGrid>

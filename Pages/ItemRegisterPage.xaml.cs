@@ -22,12 +22,7 @@ public sealed partial class ItemRegister : Page
         _bidding = e.Parameter as Bidding;
         if (_bidding is not null)
         {
-            string bidNumberStr = _bidding.Number.ToString();
-            int yearLength = 4;
-            string year = bidNumberStr.Substring(bidNumberStr.Length - yearLength);
-            string number = bidNumberStr.Substring(0, bidNumberStr.Length - yearLength);
-            string formattedString = $"{number}/{year}";
-            TxtBl_Bidding.Text = $"{_bidding.Modality} {formattedString}";
+            TxtBl_Bidding.Text = _bidding.ToString();
         }
         base.OnNavigatedTo(e);
     }

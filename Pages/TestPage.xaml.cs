@@ -11,42 +11,58 @@ namespace PropproAssistant.Pages;
 
 public sealed partial class TestPage : Page
 {
-    public ObservableCollection<BiddingItem> Items { get; private set; }
     public List<Tuple<string, int>> Options { get; } = new();
     
     public TestPage()
     {
         InitializeComponent();
-
-        using var db = new AppDbContext();
-
-        foreach (var bid in db.Biddings)
-        {
-            string bidNumberStr = bid.Number.ToString();
-            int yearLength = 4;
-            string year = bidNumberStr.Substring(bidNumberStr.Length - yearLength);
-            string number = bidNumberStr.Substring(0, bidNumberStr.Length - yearLength);
-            string formattedString = $"{number}/{year}";
-            string temp = $"{bid.Modality} {formattedString} - {bid.City}";
-            Options.Add(new Tuple<string, int>(temp, bid.Id));
-        }
-        Cbx_BiddingOptions.ItemsSource = Options;
+        InitializeBiddingOptions();
     }
 
     private void BiddingOptions_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        Tuple<string, int> test = e.AddedItems[0] as Tuple<string, int>;
-        if (test != null)
-        {
-            using var db = new AppDbContext();
-            var id = test.Item2;
-            var bidding = db.Biddings.Include(b => b.Items).FirstOrDefault(x => x.Id == id);
+        UpdateItems(e);
+    }
 
-            if (bidding != null)
-            {
-                Items = new ObservableCollection<BiddingItem>(bidding.Items);
-            }
-            DataGrid.ItemsSource = Items;
+    private void InitializeBiddingOptions()
+    {
+        using var db = new AppDbContext();
+
+        foreach (var bid in db.Biddings)
+        {
+            Options.Add(new Tuple<string, int>(bid.ToString(), bid.Id));
         }
+        Cbx_BiddingOptions.ItemsSource = Options;
+    }
+
+    private void UpdateItems(SelectionChangedEventArgs e)
+    {
+        if (e.AddedItems is null || e.AddedItems.Count == 0)
+        {
+            throw new ArgumentNullException($"{nameof(e.AddedItems)} não pode ser nulo ou vazio");
+        }
+
+        Tuple<string, int> selectedTuple = e.AddedItems[0] as Tuple<string, int>;
+
+        if (selectedTuple is null)
+        {
+            throw new NullReferenceException($"{nameof(selectedTuple)} não pode ser nulo");
+        }
+
+        var id = selectedTuple.Item2;
+        DataGrid.ItemsSource = GetItemsFromDatabase(id);
+    }
+
+    private ObservableCollection<BiddingItem> GetItemsFromDatabase(int id)
+    {
+        using var db = new AppDbContext();
+        var bidding = db.Biddings.Include(b => b.Items).FirstOrDefault(x => x.Id == id);
+
+        if (bidding != null)
+        {
+            return new ObservableCollection<BiddingItem>(bidding.Items);
+        }
+
+        throw new NullReferenceException($"{nameof(bidding)} não pode ser nulo");
     }
 }

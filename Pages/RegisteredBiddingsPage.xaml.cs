@@ -17,12 +17,7 @@ public sealed partial class RegisteredBiddings : Page
 
         if (bidding != null)
         {
-            string bidNumberStr = bidding.Number.ToString();
-            int yearLength = 4;
-            string year = bidNumberStr.Substring(bidNumberStr.Length - yearLength);
-            string number = bidNumberStr.Substring(0, bidNumberStr.Length - yearLength);
-            string formattedString = $"{number}/{year}";
-            TxtBl_Bidding.Text = $"{bidding.Modality} {formattedString}";
+            TxtBl_Bidding.Text = bidding.ToString();
 
             if (bidding.Items.Count > 0)
             {
