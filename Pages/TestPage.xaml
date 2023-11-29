@@ -6,31 +6,38 @@
     xmlns:local="using:PropproAssistant.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-     xmlns:ctWinUI="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:ctWinUI="using:CommunityToolkit.WinUI.UI.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid Margin="10">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+    <RelativePanel>
         <ComboBox
             x:Name="Cbx_BiddingOptions"
-            Header="Licitações"
             PlaceholderText="Selecione uma licitação"
             DisplayMemberPath="Item1"
             SelectedValuePath="Item2"
             Width="Auto"
-            SelectionChanged="BiddingOptions_SelectionChanged"/>
+            SelectionChanged="BiddingOptions_SelectionChanged"
+            Margin="8,0,0,0"/>
+        <Button
+            x:Name="Btn_Edit"
+            Content="Editar"
+            RelativePanel.RightOf="Cbx_BiddingOptions"
+            Margin="8,0,0,0"/>
+        <Button
+            x:Name="Btn_Delete"
+            Content="Excluir"
+            RelativePanel.RightOf="Btn_Edit"
+            Margin="8,0,0,0"
+            Click="Delete_Click"/>
         <ctWinUI:DataGrid
             x:Name="DataGrid"
             AutoGenerateColumns="False"
             IsReadOnly="True"
             Width="Auto"
-            Height="500"
-            Margin="50,10,50,10"
-            Grid.Row="1">
+            Height="600"
+            Margin="10"
+            RelativePanel.Below="Cbx_BiddingOptions">
             <ctWinUI:DataGrid.Columns>
                 <ctWinUI:DataGridTextColumn 
                     Header="Item"
@@ -58,5 +65,5 @@
                     Binding="{Binding CostValue}"/>
             </ctWinUI:DataGrid.Columns>
         </ctWinUI:DataGrid>
-    </Grid>
+    </RelativePanel>
 </Page>

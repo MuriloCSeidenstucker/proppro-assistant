@@ -14,7 +14,7 @@
             <NavigationView.MenuItems>
                 <NavigationViewItem  Content="Cadastrar Licitação" Tag="BiddingRegister" />
                 <NavigationViewItem  Content="Cadastrar Item" Tag="ItemRegister" />
-                <NavigationViewItem  Content="Licitações Cadastradas" Tag="RegisteredBiddings" />
+                <NavigationViewItem  Content="Gerenciar Licitações" Tag="RegisteredBiddings" />
                 <NavigationViewItem  Content="Página Teste" Tag="TestPage" />
             </NavigationView.MenuItems>
             <Frame x:Name="contentFrame"/>

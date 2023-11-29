@@ -27,7 +27,7 @@ public sealed partial class TestPage : Page
     private void InitializeBiddingOptions()
     {
         using var db = new AppDbContext();
-
+        
         foreach (var bid in db.Biddings)
         {
             Options.Add(new Tuple<string, int>(bid.ToString(), bid.Id));
@@ -64,5 +64,15 @@ public sealed partial class TestPage : Page
         }
 
         throw new NullReferenceException($"{nameof(bidding)} não pode ser nulo");
+    }
+
+    private void Delete_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+    {
+        int? selectedBiddingId = (int)Cbx_BiddingOptions.SelectedValue;
+
+        using var db = new AppDbContext();
+        var bidding = db.Biddings.Include(b => b.Items).FirstOrDefault(x => x.Id == selectedBiddingId);
+        db.Remove(bidding);
+        db.SaveChanges();
     }
 }

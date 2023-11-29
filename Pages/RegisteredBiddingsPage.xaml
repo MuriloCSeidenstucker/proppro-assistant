@@ -6,26 +6,57 @@
     xmlns:local="using:PropproAssistant.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ctWinUI="using:CommunityToolkit.WinUI.UI.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
-        
-        <TextBlock x:Name="TxtBl_Bidding" Grid.Row="0" Grid.Column="1"/>
-        <TextBlock Grid.Row="1" Grid.Column="0">Itens:</TextBlock>
-        <TextBlock x:Name="TxtBl_ItemNumber" Grid.Row="2" Grid.Column="0"/>
-        <TextBlock x:Name="TxtBl_ItemDescription" Grid.Row="2" Grid.Column="1"/>
-        <TextBlock x:Name="TxtBl_ItemCostValue" Grid.Row="2" Grid.Column="2"/>
+        <ComboBox
+        x:Name="Cbx_BiddingOptions"
+        Header="Licitações"
+        PlaceholderText="Selecione uma licitação"
+        DisplayMemberPath="Item1"
+        SelectedValuePath="Item2"
+        Width="Auto"
+        SelectionChanged="BiddingOptions_SelectionChanged"/>
+        <ctWinUI:DataGrid
+        x:Name="DataGrid"
+        AutoGenerateColumns="False"
+        IsReadOnly="True"
+        Width="Auto"
+        Height="500"
+        Margin="50,10,50,10"
+        Grid.Row="1">
+            <ctWinUI:DataGrid.Columns>
+                <ctWinUI:DataGridTextColumn 
+                Header="Item"
+                Width="*"
+                Binding="{Binding Number}"/>
+                <ctWinUI:DataGridTextColumn 
+                Header="Descrição"
+                Width="5*"
+                Binding="{Binding Description}"/>
+                <ctWinUI:DataGridTextColumn 
+                Header="Unidade"
+                Width="*"
+                Binding="{Binding Unit}"/>
+                <ctWinUI:DataGridTextColumn 
+                Header="Quantidade"
+                Width="*"
+                Binding="{Binding Amount}"/>
+                <ctWinUI:DataGridTextColumn 
+                Header="Marca"
+                Width="*"
+                Binding="{Binding Brand}"/>
+                <ctWinUI:DataGridTextColumn 
+                Header="Preço de Custo"
+                Width="*"
+                Binding="{Binding CostValue}"/>
+            </ctWinUI:DataGrid.Columns>
+        </ctWinUI:DataGrid>
     </Grid>
 </Page>

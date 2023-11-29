@@ -14,6 +14,7 @@ public class BiddingItem
     public string Unit { get; set; }
     public string Brand { get; set; }
 
+    public int BiddingId { get; set; }
     public Bidding Bidding { get; set; }
 
     public override string ToString()

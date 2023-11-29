@@ -1,31 +1,68 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.UI.Xaml.Controls;
 using PropproAssistant.Data;
+using PropproAssistant.Models;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System;
 using System.Linq;
 
 namespace PropproAssistant.Pages;
 
 public sealed partial class RegisteredBiddings : Page
 {
+    public List<Tuple<string, int>> Options { get; } = new();
+
     public RegisteredBiddings()
     {
         InitializeComponent();
+        InitializeBiddingOptions();
+    }
 
+    private void BiddingOptions_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        UpdateItems(e);
+    }
+
+    private void InitializeBiddingOptions()
+    {
         using var db = new AppDbContext();
-        int id = 2;
+
+        foreach (var bid in db.Biddings)
+        {
+            Options.Add(new Tuple<string, int>(bid.ToString(), bid.Id));
+        }
+        Cbx_BiddingOptions.ItemsSource = Options;
+    }
+
+    private void UpdateItems(SelectionChangedEventArgs e)
+    {
+        if (e.AddedItems is null || e.AddedItems.Count == 0)
+        {
+            throw new ArgumentNullException($"{nameof(e.AddedItems)} não pode ser nulo ou vazio");
+        }
+
+        Tuple<string, int> selectedTuple = e.AddedItems[0] as Tuple<string, int>;
+
+        if (selectedTuple is null)
+        {
+            throw new NullReferenceException($"{nameof(selectedTuple)} não pode ser nulo");
+        }
+
+        var id = selectedTuple.Item2;
+        DataGrid.ItemsSource = GetItemsFromDatabase(id);
+    }
+
+    private ObservableCollection<BiddingItem> GetItemsFromDatabase(int id)
+    {
+        using var db = new AppDbContext();
         var bidding = db.Biddings.Include(b => b.Items).FirstOrDefault(x => x.Id == id);
 
         if (bidding != null)
         {
-            TxtBl_Bidding.Text = bidding.ToString();
-
-            if (bidding.Items.Count > 0)
-            {
-                var item = bidding.Items[bidding.Items.Count - 1];
-                TxtBl_ItemNumber.Text = item.Number.ToString();
-                TxtBl_ItemDescription.Text = item.Description;
-                TxtBl_ItemCostValue.Text = item.CostValue.ToString();
-            }
+            return new ObservableCollection<BiddingItem>(bidding.Items);
         }
+
+        throw new NullReferenceException($"{nameof(bidding)} não pode ser nulo");
     }
 }
